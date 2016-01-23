@@ -29,6 +29,7 @@ export default class App extends React.Component {
 
     return (
       <div>
+       <button onClick={this.addNote}>+</button>
        <ul>{
         notes.map(note =>
           <li key={note.id}>{note.task}</li>)
@@ -36,4 +37,14 @@ export default class App extends React.Component {
       </div>
     );
   }
+
+  addNote = () => {
+    // It would be possible to write this in an imperative style.
+    this.setState({
+      notes: this.state.notes.concat([{
+        id: uuid.v4(),
+        task: 'New task'
+      }])
+    });
+  };
 }
