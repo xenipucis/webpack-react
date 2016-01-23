@@ -1,7 +1,5 @@
 const path = require('path');
-
 const merge = require('webpack-merge');
-
 const webpack = require('webpack');
 
 const TARGET = process.env.npm_lifecycle_event;
@@ -34,19 +32,20 @@ const common = {
 
 
 // Default configuration
-if (TARGET === 'start' || !TARGET) 
-{ 
+if (TARGET === 'start' || !TARGET)
+{
   module.exports = merge(common, {
+    devTool: 'eval-source-map',
     devServer: {
       contentBase: PATHS.build,
-      
-      // Enable history API fallback so HTML5 History API based routing works. 
+
+      // Enable history API fallback so HTML5 History API based routing works.
       // This is a good default that will come in handy in more complicated setups.
-      historyApiFallback: true,  
+      historyApiFallback: true,
       hot: true,
       inline: true,
       progress: true,
- 
+
       // Display only errors to reduce the amount of output.
       stats: 'errors-only',
 
@@ -54,17 +53,15 @@ if (TARGET === 'start' || !TARGET)
       host: process.env.HOST,
       port: process.env.PORT
    },
-   
+
    plugins: [
      new webpack.HotModuleReplacementPlugin()
-   ] 
+   ]
 
   });
 }
 
-if (TARGET === 'build') 
+if (TARGET === 'build')
 {
   module.exports = merge(common, {});
 }
-
-
