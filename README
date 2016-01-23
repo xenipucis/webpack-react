@@ -6,3 +6,4 @@ npm i babel-loader babel-core --save-dev
 npm i babel-preset-es2015 babel-preset-react --save-dev
 npm i babel-preset-survivejs-kanban --save-dev
 npm i react react-dom --save
+npm i babel-preset-react-hmre --save-dev
